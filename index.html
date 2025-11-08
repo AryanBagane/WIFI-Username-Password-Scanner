@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wi-Fi Credentials Reveal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- FontAwesome CDN for Wi-Fi icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #fdeff9 0%, #ec38bc 20%, #7303c0 55%, #03001e 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      letter-spacing: 0.03em;
+    }
+    .curtain {
+      position: fixed;
+      width: 50vw;
+      height: 100vh;
+      top: 0;
+      background: linear-gradient(120deg, #A8BBA3 0%, #3E3F29 100%);
+      z-index: 10;
+      transition: transform 1.1s cubic-bezier(.86,0,.07,1);
+      box-shadow: 0 0 60px 4px rgba(70,0,80,0.18);
+      opacity: 0.97;
+    }
+    .curtain.left { left: 0; transform: translateX(0); }
+    .curtain.right { right: 0; transform: translateX(0); }
+    .curtain.open.left { transform: translateX(-100%); }
+    .curtain.open.right { transform: translateX(100%); }
+    .center-content {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.6s 1.25s;
+      z-index: 1;
+    }
+    .show { opacity: 1 !important; }
+    .slang {
+      font-size: 2.2rem;
+      margin-bottom: 1.1rem;
+      color: #fdeff9;
+      text-shadow: 1px 1px 15px #b50f6d88;
+      font-weight: bold;
+      animation: popin 0.7s 1.22s both;
+    }
+    @keyframes popin {
+      0% { transform: scale(0.7); opacity: 0;}
+      100% { transform: scale(1.1); opacity: 1;}
+    }
+    .credentials {
+      background: rgba(50, 36, 80, 0.96);
+      display: inline-block;
+      border-radius: 15px;
+      padding: 1.6rem 2.7rem;
+      box-shadow: 0 4px 32px #35003d88;
+      margin-top: 1.1rem;
+      font-size: 1.43rem;
+      animation: fadein 0.7s 1.78s both;
+      border: 2.2px solid #d439ab;
+    }
+    @keyframes fadein {
+      0% { opacity: 0;}
+      100% { opacity: 1;}
+    }
+    .label {
+      color: #e338b6;
+      font-weight: 600;
+      font-size: 1.13rem;
+      letter-spacing: 0.03em;
+      padding-right: 0.3em;
+    }
+    .wifi-icon {
+      font-size: 3.1rem;
+      color: #5afedb;
+      margin-bottom: 1.1rem;
+      text-shadow: 0 2px 8px #a4508b55;
+      animation: glow 1s 1.5s both;
+    }
+    @keyframes glow {
+      0% { filter: blur(8px) brightness(0.7);}
+      100% { filter: blur(0) brightness(1);}
+    }
+    @media (max-width: 600px) {
+      .credentials { padding: 1.2rem 0.8rem; }
+      .slang { font-size: 1.23rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+  <div class="center-content">
+    <div class="slang">हवा आहे ती वाय-फाय ची, घे उडवून!</div>
+    <div class="wifi-icon"><i class="fa-solid fa-wifi"></i></div>
+    <div class="credentials">
+      <div><span class="label">SSID:</span> <span id="ssid">Airtel_Bagane</span></div>
+      <div><span class="label">Password:</span> <span id="passwd">Bagane@1609</span></div>
+    </div>
+  </div>
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        document.querySelector('.curtain.left').classList.add('open');
+        document.querySelector('.curtain.right').classList.add('open');
+      }, 70); // smaller delay for a snappy effect
+
+      setTimeout(() => {
+        document.querySelector('.center-content').classList.add('show');
+      }, 1000); // reduced overall reveal time
+    };
+    // If you wish to update your credentials easily from here:
+    document.getElementById('ssid').textContent = "Airtel_Bagane";
+    document.getElementById('passwd').textContent = "Bagane@1609";
+  </script>
+</body>
+</html>
