@@ -21,7 +21,7 @@ When someone scans your QR code, a modern animated webpage opens with a **curtai
 ### 1. Deploy on Vercel
 1. Go to [https://vercel.com/](https://vercel.com/).
 2. Drag and drop your `index.html` or link your GitHub repo.
-3. Obtain your public deployment URL (e.g. `https://wifiusernamepasswordscanner.vercel.app/`).
+3. Obtain your public deployment URL (e.g. `https://yourdomainname.vercel.app/`).
 
 ### 2. Generate QR Code
 1. Visit [qr-code-generator.com](https://www.qr-code-generator.com/) (or similar).  
